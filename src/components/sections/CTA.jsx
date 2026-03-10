@@ -1,21 +1,42 @@
 import { useState } from 'react'
-import { ArrowRight, Mail, Phone, Send, CheckCircle, Sparkles } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { ArrowRight, Mail, Phone, Send, CheckCircle, Sparkles, AlertCircle } from 'lucide-react'
+
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 export default function CTA() {
   const [formData, setFormData] = useState({ name: '', school: '', email: '', phone: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate submission
-    setTimeout(() => {
-      setLoading(false)
+    setError('')
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name:  formData.name, 
+          time:     formData.school,
+          email:   formData.email,
+          message:      formData.phone,
+        },
+        EMAILJS_PUBLIC_KEY
+      )
       setSubmitted(true)
-    }, 1200)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setError('Something went wrong. Please try again or email us directly.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -125,6 +146,13 @@ export default function CTA() {
                         className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400 transition-colors"
                       />
                     </div>
+
+                    {error && (
+                      <div className="flex items-center gap-2 text-red-300 text-sm bg-red-500/10 border border-red-400/30 rounded-xl px-4 py-3">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>{error}</span>
+                      </div>
+                    )}
 
                     <button
                       type="submit"

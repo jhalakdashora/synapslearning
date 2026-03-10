@@ -76,38 +76,41 @@ export default function Curriculum() {
           </div>
         </div>
 
-        {/* Tag */}
-        <div className="text-center mb-8 reveal">
-          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${cls.tagColor}`}>
-            {cls.tag}
-          </span>
-        </div>
+        {/* Tag + Topics — keyed on active tab so content re-mounts with animation */}
+        <div key={active} className="curriculum-tab-content">
+          {/* Tag */}
+          <div className="text-center mb-8">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${cls.tagColor}`}>
+              {cls.tag}
+            </span>
+          </div>
 
-        {/* Topics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {cls.topics.map((topic, i) => (
-            <div
-              key={topic.title}
-              className="reveal glass-card p-5 group hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4"
-              style={{ transitionDelay: `${i * 0.07}s` }}
-            >
-              <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center ${
-                active === '6-7'
-                  ? 'bg-brand-100 dark:bg-brand-900/30'
-                  : 'bg-violet-100 dark:bg-violet-900/30'
-              } group-hover:scale-110 transition-transform duration-200`}>
-                <topic.icon className={`w-5 h-5 ${
-                  active === '6-7' ? 'text-brand-600 dark:text-brand-400' : 'text-violet-600 dark:text-violet-400'
-                }`} />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{topic.title}</h4>
+          {/* Topics Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {cls.topics.map((topic, i) => (
+              <div
+                key={topic.title}
+                className="glass-card p-5 group hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex items-start gap-4"
+                style={{ animationDelay: `${i * 0.07}s` }}
+              >
+                <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center ${
+                  active === '6-7'
+                    ? 'bg-brand-100 dark:bg-brand-900/30'
+                    : 'bg-violet-100 dark:bg-violet-900/30'
+                } group-hover:scale-110 transition-transform duration-200`}>
+                  <topic.icon className={`w-5 h-5 ${
+                    active === '6-7' ? 'text-brand-600 dark:text-brand-400' : 'text-violet-600 dark:text-violet-400'
+                  }`} />
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{topic.desc}</p>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{topic.title}</h4>
+                  </div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{topic.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Bottom note */}
