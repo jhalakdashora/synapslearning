@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/sections/Hero'
 import AIRevolution from './components/sections/AIRevolution'
@@ -13,28 +14,13 @@ import Benefits from './components/sections/Benefits'
 import Impact from './components/sections/Impact'
 import CTA from './components/sections/CTA'
 import Footer from './components/sections/Footer'
+import PrivacyPolicy from './components/pages/PrivacyPolicy'
+import TermsOfService from './components/pages/TermsOfService'
+import CookiePolicy from './components/pages/CookiePolicy'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
-function App() {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' ||
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    }
-    return false
-  })
-
+function HomePage({ isDark, setIsDark }) {
   useScrollReveal()
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
-  }, [isDark])
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -54,6 +40,37 @@ function App() {
         <CTA />
       </main>
       <Footer />
+    </div>
+  )
+}
+
+function App() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    }
+    return false
+  })
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [isDark])
+
+  return (
+    <div className={isDark ? 'dark' : ''}>
+      <Routes>
+        <Route path="/" element={<HomePage isDark={isDark} setIsDark={setIsDark} />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
+      </Routes>
     </div>
   )
 }

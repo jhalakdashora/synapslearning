@@ -102,14 +102,7 @@ export default function TeacherUpskilling() {
                 ))}
               </div>
 
-              {/* Certificate note */}
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-accent-50 dark:bg-accent-950/20 border border-accent-200 dark:border-accent-800">
-                <div className="text-2xl">🎓</div>
-                <div>
-                  <p className="font-semibold text-accent-700 dark:text-accent-300 text-sm">AI Educator Certificate</p>
-                  <p className="text-xs text-accent-600/70 dark:text-accent-400/70">Awarded upon program completion</p>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

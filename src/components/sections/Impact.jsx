@@ -66,7 +66,7 @@ export default function Impact() {
           ))}
         </div>
 
-        {/* Testimonial */}
+        {/* Vision Statement */}
         <div className="reveal max-w-3xl mx-auto">
           <div className="glass-card p-8 md:p-10 relative overflow-hidden">
             {/* Decorative quote background */}
@@ -81,23 +81,22 @@ export default function Impact() {
               </div>
 
               <blockquote className="text-gray-800 dark:text-gray-200 text-lg md:text-xl font-medium leading-relaxed mb-6">
-                "Since introducing the Synaps AI program, our school has seen a remarkable 40% increase in
-                admission inquiries this year. Parents are specifically asking about the AI curriculum.
-                Our teachers feel more confident than ever, and the students absolutely love the sessions.
-                It's been a complete transformation."
+                "We believe every student in India deserves access to AI education — not as a luxury,
+                but as a fundamental skill for the future. Our mission is to partner with schools
+                to make this vision a reality, one classroom at a time."
               </blockquote>
 
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-400 to-violet-500 flex items-center justify-center text-white font-bold text-lg shadow-brand">
-                  R
+                  S
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 dark:text-white">Dr. Rekha Sharma</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Principal, Sunrise International School, Jaipur</p>
+                  <p className="font-bold text-gray-900 dark:text-white">Team Synaps</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Building the future of AI education in India</p>
                 </div>
-                <div className="ml-auto hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-semibold text-green-600 dark:text-green-400">Partner School</span>
+                <div className="ml-auto hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/20 border border-brand-200 dark:border-brand-800">
+                  <div className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
+                  <span className="text-xs font-semibold text-brand-600 dark:text-brand-400">Our Vision</span>
                 </div>
               </div>
             </div>

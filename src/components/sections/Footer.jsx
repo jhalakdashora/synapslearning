@@ -1,4 +1,5 @@
 import { Brain, Mail, Phone, ArrowUp, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const footerLinks = [
   {
@@ -22,9 +23,9 @@ const footerLinks = [
   {
     title: 'Legal',
     links: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
+      { label: 'Privacy Policy', href: '/privacy-policy', isRoute: true },
+      { label: 'Terms of Service', href: '/terms-of-service', isRoute: true },
+      { label: 'Cookie Policy', href: '/cookie-policy', isRoute: true },
     ],
   },
 ]
@@ -66,9 +67,9 @@ export default function Footer() {
                 <Mail className="w-4 h-4 flex-shrink-0 group-hover:text-brand-400" />
                 learningsynaps@gmail.com
               </a>
-              <a href="tel:+917877377184" className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-brand-400 transition-colors group">
+              <a href="tel:+917014447069" className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-brand-400 transition-colors group">
                 <Phone className="w-4 h-4 flex-shrink-0 group-hover:text-brand-400" />
-                +91 7877377184
+                +91 7014447069
               </a>
             </div>
 
@@ -98,12 +99,21 @@ export default function Footer() {
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <button
-                      onClick={() => scrollTo(link.href)}
-                      className="text-sm text-gray-400 hover:text-brand-400 transition-colors text-left"
-                    >
-                      {link.label}
-                    </button>
+                    {link.isRoute ? (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-gray-400 hover:text-brand-400 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => scrollTo(link.href)}
+                        className="text-sm text-gray-400 hover:text-brand-400 transition-colors text-left"
+                      >
+                        {link.label}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>

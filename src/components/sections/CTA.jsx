@@ -55,7 +55,7 @@ export default function CTA() {
           <div className="text-center mb-12 reveal">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6">
               <Sparkles className="w-3.5 h-3.5 text-accent-400" />
-              Join 50+ Schools Already Transforming Education
+              Be Among the First Schools to Embrace AI Education
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
               The Future Is AI.
@@ -187,11 +187,11 @@ export default function CTA() {
                     </div>
                     <span className="text-sm">learningsynaps@gmail.com</span>
                   </a>
-                  <a href="tel:+917877377184" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group">
+                  <a href="tel:+917014447069" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group">
                     <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                       <Phone className="w-4 h-4" />
                     </div>
-                    <span className="text-sm">+91 7877377184</span>
+                    <span className="text-sm">+91 7014447069</span>
                   </a>
                 </div>
               </div>
